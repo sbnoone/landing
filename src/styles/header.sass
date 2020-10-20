@@ -1,0 +1,254 @@
+.header
+  
+  &.fixed
+    height: $static-header-height
+
+  &.fixed .header__menu 
+    position: fixed
+    z-index: 2
+    top: 0
+    width: 100%
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2)
+
+  &.fixed .header__nav 
+    top: $fixed-header-height
+
+  &.fixed &__nav.open .mask
+    top: $fixed-header-height
+
+.header__contacts
+  border-bottom: 1px solid $header-border-clr
+
+.header__contacts_inner
+  $height: 30px
+  height: $height
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  font-size: 1em
+
+  & > *
+    position: relative
+
+  & > * + *
+    margin-left: 2.66em
+    &::before
+      content: ''
+      position: absolute
+      top: -10px
+      left: -1.33em
+      height: $height + 2px
+      width: 1px
+      background-color: $header-border-clr
+
+  .header__contacts_item 
+    display: flex
+    align-items: center
+
+    a 
+      text-decoration: none
+      color: $clr-primary-dark
+
+  .header__contacts_link
+    margin-left: .7em
+    
+  .contacts_icon 
+    margin-right: .7em
+    font-size: 1.266em
+
+    &.fa-envelope
+      margin-right: 0.3em
+
+  .facebook
+    background-color: $bg-blue
+    color: $clr-primary-light
+    padding: .333em .6em
+    border-radius: 2px
+
+    &:hover 
+      background-color: lighten($bg-blue, 5%)
+
+.header__menu 
+  background-color: $clr-primary-light
+
+.header__menu_inner
+  height: $fixed-header-height
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.header__logo 
+  position: relative
+  padding-left: 5.333em
+  text-decoration: none
+  color: $clr-primary-dark
+
+.header__logo_icon
+  position: absolute
+  top: 50%
+  left: 0
+  transform: translateY(-50%)
+  font-size: 3.8em
+  color: $clr-red
+  
+
+.header__logo_title
+  font-size: 2.466em
+  line-height: 1
+
+.header__logo_tagline 
+  line-height: 1.2
+
+.header__nav 
+  position: fixed
+  right: -100%
+  top: $static-header-height
+  bottom: 0
+  max-width: 120px
+  min-width: 102px
+  width: 30vw
+  background-color: $clr-primary-light
+  z-index: 2
+  border-top: 1px solid $header-border-clr
+  box-shadow: -2px 3px 2px 1px rgba(0, 0, 0, 0.1)
+
+  @keyframes openNav
+    0%
+      right: -100%
+    100%
+      right: 0
+
+  &.open 
+    animation-name: openNav
+    animation-duration: .3s
+    animation-timing-function: ease-out
+    animation-fill-mode: forwards
+
+    .mask
+      display: block
+      z-index: -1
+      top: $static-header-height
+
+.header__nav_list
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  position: relative
+  z-index: 2
+  height: 100%
+  background: $clr-primary-light
+
+.header__nav_item 
+  margin-right: 1em
+  
+.header__nav_link
+  font-size: 1.2em
+  font-weight: 700
+  text-decoration: none 
+  color: $clr-primary-dark
+  display: inline-block
+  padding: .7em .5em
+
+  &:hover 
+    color: $clr-red
+
+.header__nav_button
+  font-size: 1.2em 
+  color: $clr-primary-light
+  text-decoration: none
+  padding: 0.4em 0.6em
+
+  &:hover
+    background-color: darken($clr-red, 5%)
+
+@media ( min-width: 500px )
+  .header
+    &.fixed
+      height: $static-header-height-500
+
+
+    &.fixed .header__nav 
+      top: $fixed-header-height-500
+
+    &.fixed &__nav.open .mask
+      top: $fixed-header-height-500
+
+  .header__contacts_inner 
+    $height: 43px
+    height: $height
+
+    & > * + *
+      &::before
+        top: -14px
+        height: $height + 2px
+  
+  .header__menu_inner
+    height: $fixed-header-height-500
+  
+  .header__nav 
+    top: 43px + $fixed-header-height-500 + 1px
+    width: 25vw
+    max-width: 135px
+
+    &.open .mask 
+      top: $static-header-height-500
+
+    
+
+@media ( min-width: 768px )
+
+  .burger_btn 
+    display: none
+  
+  .header__nav 
+    width: auto
+    position: static
+    background-color: unset
+    box-shadow: unset
+    border: 0
+    max-width: none
+
+  .header__nav_list
+    flex-direction: row
+    align-items: normal
+
+  .header__nav_item
+    display: flex
+    align-items: center
+    position: relative
+    margin-right: 0
+
+    & + & 
+      margin-left: 3.1666em
+      &::before
+        content: ''
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        left: -1.5833em
+        height: 5px
+        width: 5px
+        border-radius: 50%
+        background-color: $clr-primary-dark
+
+    &:last-child
+      margin-left: 1.633em
+  
+    &:last-child::before
+      content: none
+
+  .header__nav_link
+    padding: 0
+
+  .header__nav_link
+    font-size: 1em
+    font-weight: 700
+    text-decoration: none 
+    color: $clr-primary-dark
+    display: inline-block
+
+  .header__nav_button 
+    font-size: 1em 
+    padding: 1em 1.533em
+    border-radius: 4px
+

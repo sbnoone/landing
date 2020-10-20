@@ -1,0 +1,181 @@
+.analysis 
+  background-color: $bg-blue
+
+.analysis__inner 
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding: 6.666em 0
+  
+.analysis__header 
+  color: $clr-primary-light
+  font-size: 2.4em
+  line-height: 1.5
+  text-align: center
+  width: 95%
+
+.analysis__text 
+  color: $clr-primary-light
+  font-size: 1.8em
+  margin-bottom: 1em
+
+.analysis__close-form-btn
+  cursor: pointer
+  position: absolute
+  right: -10px
+  top: -10px
+  width: 26px
+  height: 26px
+  border-style: solid
+  border-width: 2px
+  border-color: #fff
+  border-radius: 50%
+  background-color: $btn-bg
+  outline: none
+
+  &:hover
+    background-color: darken($clr-red, 5%)
+
+  span
+    color: #fff
+    font-size: 0.9em
+
+.analysis__open-form-btn 
+  background-color: transparent
+  width: 40px
+  height: 40px
+  border: 3px solid $clr-primary-light
+  border-radius: 50%
+  margin-bottom: 2rem
+  cursor: pointer
+  outline: none
+  &:hover
+    span 
+      animation-play-state: paused
+
+  @include anim-jump
+ 
+  span 
+    width: 10px
+    height: 10px
+    border-right: 3px solid $clr-primary-light
+    border-bottom: 3px solid $clr-primary-light
+    animation: jump 1.8s infinite
+
+.analysis__form-container
+  padding: 4em
+  border-radius: 2px
+  max-width: 683px
+  width: 90%
+  position: relative
+  background-color: $clr-primary-light
+  opacity: 0
+
+  @include anim-fade-in-fwd
+  @include anim-fade-out
+
+  &.visible
+    animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both
+
+  &.closed
+    animation: fade-out .3s forwards
+
+  &::before
+    content: ''
+    position: absolute
+    top: -15px
+    left: 50%
+    transform: translateX(-50%)
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 0 16px 16px 16px
+    border-color: transparent transparent $clr-primary-light transparent
+
+.analysis__form-description
+  font-size: 1.2em 
+  line-height: 1.5
+  color: #828282
+  text-align: center
+  margin-bottom: 2em
+
+.analysis__form 
+  margin: 0 auto
+  max-width: 445px
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.analysis__form_input 
+  width: 100%
+  color: $clr-primary-dark
+  background-color: rgb(241, 241, 241)
+  border-radius: 3px
+  border: 1px solid #b0b0b0
+  outline: none
+  
+  font-size: 1.4em
+  padding: 1.1em
+  margin-bottom: .9em
+
+  &:last-of-type
+    margin-bottom: 2em
+  
+  &:focus
+    border-color: rgb(18, 135, 191)
+    box-shadow: 0px 0 3px 0px #1287bf
+
+.analysis__form_btn 
+  cursor: pointer
+  font-weight: 700
+  text-transform: uppercase
+  border: none
+  max-width: 161px
+  padding: 1em 1.2em
+
+  &:hover
+    background-color: darken($clr-red, 5%)
+  
+@media screen and ( min-width: $breakpoint-md )
+ 
+  .analysis__header 
+    font-size: 2.4em
+    line-height: 1
+
+  .analysis__text 
+    font-size: 1.333em
+    margin-bottom: 1em
+
+  .analysis__close-form-btn
+    right: -24px
+    top: -24px
+    width: 48px
+    height: 48px
+
+    span
+      font-size: 1.5em
+
+  .analysis__open-form-btn 
+    width: 62px
+    height: 62px
+    margin-bottom: 3.5em
+    span 
+      width: 12px
+      height: 12px
+
+  .analysis__form-container   
+    &::before
+      top: -32px
+      border-width: 0 32px 32px 32px
+
+  .analysis__form-description 
+    font-size: 1em
+
+  .analysis__form_input 
+    font-size: .9em
+    padding: 1.3em
+    margin-bottom: 1em
+
+  .analysis__form_btn 
+    padding: 1em 2em

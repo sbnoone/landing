@@ -1,0 +1,109 @@
+body
+  background-color: $body-bg
+  color: $clr-primary-dark
+  font-size: $font-size-xs
+  line-height: 1.5
+  font-family: 'Roboto', serif
+
+  overflow-x: hidden
+
+  &.locked
+    overflow: hidden
+
+  @media screen and ( min-width: $breakpoint-sm ) and (max-width: $breakpoint-md - 1)
+    &
+      font-size: $font-size-sm
+
+  @media screen and ( min-width: $breakpoint-md )
+    &
+      font-size: $font-size-md
+
+  @media screen and ( min-width: 900px )
+    &
+      font-size: $font-size-lg
+
+.container
+  max-width: 1024px
+  width: 100%
+  margin: 0 auto
+  padding: 0 12px
+
+.btn
+  display: inline-block
+  color: $btn-color
+  background-color: $btn-bg
+  padding: 1em 1.533em
+  border-radius: 4px
+
+.mask
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(#000, .4)
+  z-index: -1
+
+.burger_btn
+  width: 30px
+  height: 20px
+  display: flex
+  align-items: center
+  position: relative
+  cursor: pointer
+
+  &.open
+    span
+      background-color: transparent
+      &::before
+        transform: rotateZ(-45deg) translate(-4px, 4px)
+      &::after
+        transform: rotateZ(45deg) translate(-4px, -4px)
+
+  & span
+    position: relative
+    width: 30px
+    height: 2px
+    background-color: #000
+    transition: all .2s linear
+
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      width: 30px
+      height: 2px
+      background-color: #000
+      left: 0
+      transition: all .2s linear
+
+    &::before
+      bottom: 6px
+    &::after
+      top: 6px
+
+.section__header
+  width: 100%
+  text-align: center
+  padding-bottom: 1em
+  margin-bottom: 2em
+  position: relative
+
+  &::before
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    height: .3em
+    width: 3.333em
+    background-color: $clr-primary-dark
+
+.section__title
+  font-size: 2.4em
+
+.section__text
+  font-size: 1.333em

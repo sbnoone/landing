@@ -1,0 +1,131 @@
+.approach__steps
+  display: flex
+  flex-wrap: wrap
+  overflow-x: hidden
+
+  @include anim-slide-in-right
+  @include anim-slide-in-left
+
+  & .approach__step 
+    &:nth-of-type(odd)
+      transform: translateX(-100vw)
+    &:nth-of-type(even)
+      transform: translateX(100vw)
+      
+  &.visible 
+    & .approach__step
+      &:nth-of-type(odd)
+        animation: slide-in-left .8s ease-out forwards
+      &:nth-of-type(even)
+        animation: slide-in-right .8s ease-out forwards
+        
+    @for $stepNum from 1 through 3
+      & .approach__step:nth-of-type(#{$stepNum + 1})
+        animation-delay: #{$stepNum / 4}s
+
+.approach__step 
+  display: flex
+  flex-direction: column
+  background-color: $clr-primary-light
+  padding: 2em
+  margin-bottom: 3em
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1)
+
+.approach__image_box
+  position: relative
+  margin: 0 auto 2em
+  max-width: 450px
+
+.approach__img
+  width: 100%
+
+.approach__step_number 
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  position: absolute
+  width: 7em
+  height: 7em
+  background-color: $clr-red
+  color: $clr-primary-light
+  border: 2px solid $clr-primary-light
+  bottom: 3px
+  left: 3px
+  border-radius: 3px
+
+  &.approach__step_number_right
+    left: unset
+    right: 3px
+
+  & span
+    font-size: 4em 
+    line-height: 1
+
+  & p
+    font-size: 1.333em
+    line-height: 1
+ 
+.approach__content
+  display: flex
+  flex-direction: column
+  padding: 0 2em 
+  text-align: center
+
+.approach__title
+  font-size: 1.8em  
+
+.approach__text 
+  font-size: 1.6em
+
+@media screen and ( min-width: $breakpoint-md )
+  .approach__steps
+    justify-content: space-between
+
+  .approach__step 
+    flex: 0 1 48%
+
+    .approach__title 
+      font-size: 1.5em
+  
+  .approach__text
+    font-size: 1.2em
+  
+
+@media screen and ( min-width: 900px )
+
+  .approach__inner
+    padding: 2em 0 8.5em
+    
+  .approach__step 
+    padding: 0
+    flex: 100%
+    flex-direction: row
+    &:nth-of-type(even)
+      flex-direction: row-reverse
+      & .approach__content
+        padding: 0px 7em 0 4em
+
+  .approach__image_box
+    margin: 0
+
+  .approach__step_number
+    top: 50%
+    right: -3.5em
+    left: unset
+    transform: translateY(-50%)
+
+    &.approach__step_number_right
+      left: -3.5em
+
+  .approach__content
+    flex: 59%
+    justify-content: center
+    padding: 0px 4em 0 7em
+    text-align: left
+  
+  .approach__title 
+    font-size: 1.2em
+  
+  .approach__text
+    font-size: .9em

@@ -1,0 +1,121 @@
+.footer 
+  background-color: #2a2a2a
+
+.footer__inner 
+  display: flex
+  flex-direction: column
+  align-items: center
+  color: $clr-primary-light
+  padding: 3em 0
+  
+.footer__title 
+  font-size: 1.933em
+  margin-bottom: .7em
+ 
+
+.footer__social 
+  display: flex
+  margin-bottom: 1em
+
+  & > *
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 30px
+    height: 30px
+    border: 2px solid #515151
+    background-color: transparent
+    text-decoration: none
+    cursor: pointer
+
+  * + * 
+    margin-left: 1em
+  
+  & > *:hover
+    border-color: $clr-red
+
+  @include anim-flip-in-ver-right 
+
+  &.visible &_link
+    animation: flip-in-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+
+  &.visible
+    @for $i from 1 through 3
+      .footer__social_link:nth-of-type(#{$i + 1})
+        animation-delay: #{$i / 4}s
+
+.footer__social-icon 
+  color: #fff
+  font-size: 1.533em
+  
+.footer__text 
+  font-size: 1.3em
+  margin-bottom: 1em
+
+.footer__form 
+  width: 90%
+  display: flex
+  flex-direction: column
+  
+
+.footer__input
+  width: 100%
+  padding: 1em
+  background-color: #515151 
+  color: $clr-primary-light
+  border: 1px solid transparent
+  outline: none
+  margin-bottom: 1em
+
+  &:focus
+    border-color: #cecece 
+
+  &::placeholder 
+    color: #cecece 
+    font-size: .8em
+   
+
+.footer__btn 
+  padding: .8em 1.4em
+  align-self: center
+  border: 2px solid rgb(81, 81, 81)
+  border-radius: 1px
+  background-color: rgba(243, 243, 243, 0)
+  cursor: pointer
+  
+  &:hover
+    box-shadow: 0px 0px 3px 1px rgb(81, 81, 81)
+
+.footer__copyright
+  background-color: #515151
+  text-align: center
+  color: #cecece
+  font-size: 1.2em
+  padding: 1em 0
+
+
+@media screen and ( min-width: 700px )
+
+  .footer__input
+    max-width: 683px  
+    margin-left: auto
+    margin-right: auto
+
+@media screen and ( min-width: $breakpoint-md )
+  .footer__social > *
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 50px
+    height: 50px
+
+  .footer__input::placeholder
+    font-size: 1em
+
+  .footer__text 
+    font-size: 1.1em
+    margin-bottom: 1em
+
+  .footer__copyright
+    font-size: 1em
+  

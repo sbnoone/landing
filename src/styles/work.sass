@@ -1,0 +1,159 @@
+.work
+  background-color: $clr-red
+  .container
+    padding: 0
+  
+  .section__header 
+    color: $clr-primary-light
+    &::before
+      background-color: $clr-primary-light
+
+.work__inner 
+  padding-top: 3em
+
+.work__gallery 
+  display: grid
+  justify-content: center
+
+  grid-template-columns: minmax(auto, 450px)
+  grid-template-rows: repeat(8, 50vh)
+
+.work__item 
+  background-color: #f35e59
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  
+  
+  &_1
+    order: 1
+  &_2
+    order: 2
+  &_3
+    order: 3
+  &_4
+    order: 4
+  &_5
+    order: 6
+  &_6
+    order: 5
+  &_7
+    order: 8
+  &_8
+    order: 7
+
+
+.work__item_content 
+  color: $clr-primary-light
+
+.work__item_icon
+  margin-bottom: 1.5em
+  i
+    font-size: 5em
+    color: #f9afac 
+
+.work__item_title 
+  font-size: 2.2em
+
+.work__item_text 
+  font-size: 1.7em
+
+.work__item_image
+  position: relative
+  
+
+.work__item_img 
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  object-fit: fill
+
+@media screen and ( min-width: $breakpoint-md )
+  .work__gallery 
+    grid-template-columns: repeat(2, minmax(auto, 45vw))
+    grid-template-rows: repeat(4, 50vh)
+  
+  .work__inner 
+    padding-bottom: 5em
+
+  .work__item 
+    &_1
+      order: 1
+    &_2
+      order: 2
+    &_3
+      order: 4
+    &_4
+      order: 3
+    &_5
+      order: 6
+    &_6
+      order: 5
+    &_7
+      order: 7
+    &_8
+      order: 8
+
+  
+  .work__item_icon i
+    font-size: 2.4em
+
+
+  
+@media screen and ( min-width: $breakpoint-lg )
+  .work
+    
+  .work__inner 
+    padding: 8.5em 0
+
+  .work__gallery 
+    grid-template-columns: repeat(4, 1fr)
+    grid-template-rows: repeat(2, 253px)
+
+    @include anim-scale-in-ctr
+
+    &.visible .work__item
+      animation: scale-in-ctr .3s ease-out forwards
+
+    &.visible 
+      @for $i from 1 through 8
+        .work__item:nth-of-type(#{$i + 1})
+          animation-delay: #{$i / 7}s
+
+  .work__item 
+    transform: scale(0)
+    &_1
+      order: 1
+    &_2
+      order: 2
+    &_3
+      order: 3
+    &_4
+      order: 4
+    &_5
+      order: 5
+    &_6
+      order: 6
+    &_7
+      order: 7
+    &_8
+      order: 8
+
+  .work__item_img
+    object-fit: cover
+
+  .work__item_content 
+
+  .work__item_icon i
+    font-size: 2.4em
+      
+  .work__item_title 
+    font-size: 1.733em
+
+  .work__item_text 
+    font-size: 1.066em
+
+  .work__item_img 
